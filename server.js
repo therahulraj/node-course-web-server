@@ -2,6 +2,9 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000; //so this is perfectly configured for both
+//to run on heroku and local server.
+
 var app = express();
 hbs.registerPartials(__dirname + '/views/partials'); //this is setup
 //this will take absolute path to files where handlebar partial files are being stored.
@@ -122,8 +125,8 @@ app.get('/rendering', (req, res) => {
 
 
 
-app.listen(3000, () => {
-  console.log('the server is up on: port 3000') //this is let you to do something as it takes little time to get started.
+app.listen(port, () => {
+  console.log(`server is up on port ${port}`) //this is let you to do something as it takes little time to get started.
 });
 //this is going to bind the application to a port on our machine.
 //the apps that use listen hangs as long it shut down manually its waiting for the request to come in.
